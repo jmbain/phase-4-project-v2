@@ -10,6 +10,9 @@ import ApplicationList from './components/ApplicationList.jsx'
 import StudentList from './components/StudentList.jsx'
 import NavBar from './components/NavBar.jsx'
 
+import { applicationListLoader, studentListLoader } from './loaders.js'
+
+
 const router = createBrowserRouter([
   {
     path:'/',
@@ -20,12 +23,12 @@ const router = createBrowserRouter([
       {
         path: '/applications',
         element: <ApplicationList />,
-        // loader: applicationListLoader
+        loader: applicationListLoader
       },
       {
         path: '/students',
         element: <StudentList />,
-        // loader: studentListLoader
+        loader: studentListLoader
       // },
       // {
       //   path: '/schools',
