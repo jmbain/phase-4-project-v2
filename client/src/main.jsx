@@ -1,8 +1,14 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider, ReactDOM } from 'react-router-dom'
+import ReactDOM from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+import ErrorPage from './components/ErrorPage.jsx'
 import App from './App.jsx'
 import './index.css'
+
+import ApplicationList from './components/ApplicationList.jsx'
+import StudentList from './components/StudentList.jsx'
+import NavBar from './components/NavBar.jsx'
 
 const router = createBrowserRouter([
   {
@@ -14,17 +20,17 @@ const router = createBrowserRouter([
       {
         path: '/applications',
         element: <ApplicationList />,
-        loader: applicationListLoader
+        // loader: applicationListLoader
       },
       {
         path: '/students',
         element: <StudentList />,
-        loader: studentListLoader
-      },
-      {
-        path: '/schools',
-        element: <SchoolList />,
-        loader: schoolListLoader
+        // loader: studentListLoader
+      // },
+      // {
+      //   path: '/schools',
+      //   element: <SchoolList />,
+      //   // loader: schoolListLoader
       }
     ]
   }
