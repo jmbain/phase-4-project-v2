@@ -29,11 +29,6 @@ const router = createBrowserRouter([
         path: '/students',
         element: <StudentList />,
         loader: studentListLoader
-      // },
-      // {
-      //   path: '/schools',
-      //   element: <SchoolList />,
-      //   // loader: schoolListLoader
       }
     ]
   }

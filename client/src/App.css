@@ -59,3 +59,32 @@
   font-size: 1.2rem ;
   color: whitesmoke;
 }
+
+.applicationCard {
+  border-radius: 8px;
+  background: #ffffff80;
+  color: #000000;
+  font-weight: bold;
+  border: black solid 1px;
+  width: 90%;
+  height: auto;
+  margin: 5px;
+  list-style-type: none;
+  cursor: pointer;
+  padding-left: 5px;
+  padding-right: 5px;
+
+}
+
+.application-list {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.applicationCard > a {
+  color: #000000;
+}
+
+.applicationCard:hover {
+  transform: translate(25px, 0px)
+}
