@@ -47,7 +47,7 @@ class Student(db.Model, SerializerMixin):
     application = db.relationship('Application', back_populates='students')
 
     # serialization rules
-    serialize_rules = ('-user.students',) # -owner_id is optiona
+    serialize_rules = ('-user.students', '-application.students') # -owner_id is optiona
     # serialize_only = ['name']
 
 # this is fine to keep for now, student age should not be less than 0...
@@ -74,7 +74,7 @@ class School(db.Model, SerializerMixin):
     application = db.relationship('Application', back_populates="school")
     user = db.relationship('User', back_populates="school")
     #TBD if serialize rules required for this...
-    serialize_rules = ['-application.school'] 
+    serialize_rules = ['-application.school', '-user.school'] 
 
 
 class Application(db.Model, SerializerMixin):
@@ -90,7 +90,7 @@ class Application(db.Model, SerializerMixin):
     user = db.relationship('User', back_populates='application')
     school = db.relationship('School', back_populates='application')
 
-    serialize_rules = ['-student.application', '-user.application']
+    serialize_rules = ['-student.application', '-user.application', '-school.application']
 
     #TBD Not sure this repr will be backwards compatible with students relationship...
     def __repr__(self) -> str:
@@ -106,13 +106,13 @@ class User(db.Model, SerializerMixin):
     user_type = db.Column(db.String, nullable=False) # Applicant vs Staff
     staff_type = db.Column(db.String, nullable=True) # General vs Priveleged
     school_id = db.Column(db.String, db.ForeignKey('schools.id')) #current thinking is this should be for staff users i.e. a staff should have 1 school
-    
+
 
     students = db.relationship('Student', back_populates="user")
     application = db.relationship('Application', back_populates="user")
     school = db.relationship('School', back_populates='user')
 
-    serialize_rules = ['-password_hash', '-application.user', '-student.user']
+    serialize_rules = ['-password_hash', '-application.user', '-student.user', '-school.user']
 
     @hybrid_property
     def password(self):

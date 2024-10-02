@@ -201,3 +201,6 @@ def check_session():
     
     # return success code 
     return user.to_dict(), 200
+
+if __name__ == '__main__':
+    app.run(port=4242, debug=True)
