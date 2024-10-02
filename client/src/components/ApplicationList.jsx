@@ -1,8 +1,8 @@
-import { useOutletContext, useLoaderData } from "react-router-dom"
+import { useOutletContext } from "react-router-dom"
 import ApplicationCard from "./ApplicationCard"
 
 function ApplicationList() {
-    const applications = useLoaderData()
+
     const {filteredApplications} = useOutletContext() // This imports the list of components to be rendered, in this case should be applications
     
     // This displays Application components via a map of the application list
